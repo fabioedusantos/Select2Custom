@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Select2 Custom By Fábio Santos</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/select2.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/fix.select2.css" rel="stylesheet" type="text/css"/>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/select2.full.js"></script>
+    <script src="js/customFunctions.js"></script>
+</head>
+<body>
+<div class="container">
+    <h2>Sobre</h2>
+    <blockquote>
+        Consiste em uma adaptação e um conjunto de correções para a biblioteca Select2 (https://select2.github.io/).<br><br>
+        Atualmente temos duas funções que basicamente funcionam utilizando jQuery:<br>
+        1. <strong>$('select#selectAjax').select2Ajax();</strong> - onde devemos informar alguns atributos data na
+        &nbsp;&nbsp;declaração do objeto HTML:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<strong>data-url=""</strong> - url que será pesquisada<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<strong>data-placeholder=""</strong> - texto que fica por default no input<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<strong>data-limiteCaracteres=""</strong> - quando select multiplo, define o tamanho dos itens selecionados
+                    na sua exibição (quantidade de caracteres)<br>
+        &nbsp;&nbsp;<strong style="color: red">OBS: Utilizando o AJAX, sua url requisitada receberá uma requisição POST com
+            o input de nome "pesquisa" com o texto digitado pelo usuário para que seja adaptado os resultados.</strong><br><br>
+
+        2. <strong>$('select#selectAjax').select2Ajax(placeholder, semPesquisa);</strong> - onde pode se omitir os parâmetros placeholder e pesquisa,
+        no entanto <strong>placeholder</strong> define o texto default do campo e <strong>semPesquisa</strong> quando <strong>true</strong> desabilita
+        o mecanismo de pesquisa do campo.
+    </blockquote>
+
+    <h2>Com Ajax</h2>
+    <h3>Select Tradicional</h3>
+    <textarea style="width: 100%; height: 170px;">
+        &lt;div class=&quot;form-group&quot;&gt;
+        &lt;select class=&quot;form-control&quot; id=&quot;selectAjax&quot; data-url=&quot;retorno.html&quot; data-placeholder=&quot;Selecione&quot; style=&quot;width: 300px;&quot;&gt;&lt;/select&gt;
+        &lt;script&gt;
+            $(document).ready(function () {
+            $('select#selectAjax').select2Ajax();
+            });
+        &lt;/script&gt;
+        &lt;/div&gt;</textarea>
+    <div class="form-group">
+        <select class="form-control" id="selectAjax" data-url="retorno.html" data-placeholder="Selecione" style="width: 300px;"></select>
+        <script>
+            $(document).ready(function () {
+                $('select#selectAjax').select2Simple();
+            });
+        </script>
+    </div>
+
+    <h3>Select Tradicional</h3>
+    <textarea style="width: 100%; height: 170px;">
+        &lt;div class=&quot;form-group&quot;&gt;
+        &lt;select class=&quot;form-control&quot; id=&quot;selectAjaxMultiplo&quot; multiple data-placeholder=&quot;Selecione um ou mais valores&quot; data-limiteCaracteres=&quot;9&quot; data-url=&quot;retorno.html&quot; style=&quot;width: 300px;&quot;&gt;&lt;/select&gt;
+        &lt;script&gt;
+            $(document).ready(function () {
+            $('select#selectAjaxMultiplo').select2Ajax();
+            });
+        &lt;/script&gt;
+        &lt;/div&gt;</textarea>
+    <div class="form-group">
+        <select class="form-control" id="selectAjaxMultiplo" multiple data-placeholder="Selecione um ou mais valores" data-limiteCaracteres="9" data-url="retorno.html" style="width: 300px;"></select>
+        <script>
+            $(document).ready(function () {
+                $('select#selectAjaxMultiplo').select2Ajax();
+            });
+        </script>
+    </div>
+
+    <h2>Sem Ajax</h2>
+    <h3>Select Tradicional</h3>
+    <textarea style="width: 100%; height: 170px;">
+        &lt;div class=&quot;form-group&quot;&gt;
+        &lt;select class=&quot;form-control&quot; id=&quot;simpleSelect&quot; style=&quot;width: 300px;&quot;&gt;
+        &lt;/select&gt;
+        &lt;script&gt;
+            $(document).ready(function () {
+            $('select#simpleSelect').select2Simple();
+            });
+        &lt;/script&gt;
+        &lt;/div&gt;</textarea>
+    <div class="form-group">
+        <select class="form-control" id="simpleSelect" style="width: 300px;">
+            <option value="">Selecione um valor</option>
+            <option value="1">Joséfa</option>
+            <option value="2">Felizberta</option>
+            <option value="3">Godofreda</option>
+            <option value="4">Lindesbela</option>
+            <option value="5">Brocubela</option>
+        </select>
+        <script>
+            $(document).ready(function () {
+                $('select#simpleSelect').select2Simple();
+            });
+        </script>
+    </div>
+
+    <h3>Select Tradicional Com Placeholder Customizado</h3>
+    <textarea style="width: 100%; height: 170px;">
+        &lt;div class=&quot;form-group&quot;&gt;
+        &lt;select class=&quot;form-control&quot; id=&quot;simpleSelectPlaceholder&quot; style=&quot;width: 300px;&quot;&gt;
+        &lt;/select&gt;
+        &lt;script&gt;
+            $(document).ready(function () {
+            $('select#simpleSelectPlaceholder').select2Simple(&quot;Meu Placeholder&quot;);
+            });
+        &lt;/script&gt;
+        &lt;/div&gt;</textarea>
+    <div class="form-group">
+        <select class="form-control" id="simpleSelectPlaceholder" style="width: 300px;">
+            <option value="">Selecione um valor</option>
+            <option value="1">Joséfa</option>
+            <option value="2">Felizberta</option>
+            <option value="3">Godofreda</option>
+            <option value="4">Lindesbela</option>
+            <option value="5">Brocubela</option>
+        </select>
+        <script>
+            $(document).ready(function () {
+                $('select#simpleSelectPlaceholder').select2Simple("Meu Placeholder");
+            });
+        </script>
+    </div>
+
+    <h3>Select Tradicional Sem Pesquisa</h3>
+    <textarea style="width: 100%; height: 170px;">
+        &lt;div class=&quot;form-group&quot;&gt;
+        &lt;select class=&quot;form-control&quot; id=&quot;simpleSelectNoSearch&quot; style=&quot;width: 300px;&quot;&gt;
+        &lt;/select&gt;
+        &lt;script&gt;
+            $(document).ready(function () {
+            $('select#simpleSelectNoSearch').select2Simple(null, true);
+            });
+        &lt;/script&gt;
+        &lt;/div&gt;</textarea>
+    <div class="form-group">
+        <select class="form-control" id="simpleSelectNoSearch" style="width: 300px;">
+            <option value="">Selecione um valor</option>
+            <option value="1">Joséfa</option>
+            <option value="2">Felizberta</option>
+            <option value="3">Godofreda</option>
+            <option value="4">Lindesbela</option>
+            <option value="5">Brocubela</option>
+        </select>
+        <script>
+            $(document).ready(function () {
+                $('select#simpleSelectNoSearch').select2Simple(null, true);
+            });
+        </script>
+    </div>
+
+    <h3>Select Tradicional Sem Pesquisa</h3>
+    <textarea style="width: 100%; height: 170px;">
+        &lt;div class=&quot;form-group&quot;&gt;
+        &lt;select class=&quot;form-control&quot; id=&quot;simpleSelectNoSearchPlaceHolder&quot; style=&quot;width: 300px;&quot;&gt;
+        &lt;/select&gt;
+        &lt;script&gt;
+            $(document).ready(function () {
+            $('select#simpleSelectNoSearch').select2Simple(&quot;Meu Placeholder&quot;, true);
+            });
+        &lt;/script&gt;
+        &lt;/div&gt;</textarea>
+    <div class="form-group">
+        <select class="form-control" id="simpleSelectNoSearchPlaceHolder" style="width: 300px;">
+            <option value="">Selecione um valor</option>
+            <option value="1">Joséfa</option>
+            <option value="2">Felizberta</option>
+            <option value="3">Godofreda</option>
+            <option value="4">Lindesbela</option>
+            <option value="5">Brocubela</option>
+        </select>
+        <script>
+            $(document).ready(function () {
+                $('select#simpleSelectNoSearch').select2Simple("Meu Placeholder", true);
+            });
+        </script>
+    </div>
+
+    <h3>Select Tradicional Múltiplo</h3>
+    <textarea style="width: 100%; height: 170px;">
+        &lt;div class=&quot;form-group&quot;&gt;
+        &lt;select class=&quot;form-control&quot; id=&quot;simpleSelectMultiplo&quot; multiple style=&quot;width: 300px;&quot;&gt;
+        &lt;/select&gt;
+        &lt;script&gt;
+            $(document).ready(function () {
+            $('select#simpleSelectMultiplo').select2Simple();
+            });
+        &lt;/script&gt;
+        &lt;/div&gt;</textarea>
+    <div class="form-group">
+        <select class="form-control" id="simpleSelectMultiplo" multiple style="width: 300px;">
+            <option value="">Selecione um valor</option>
+            <option value="1">Joséfa</option>
+            <option value="2">Felizberta</option>
+            <option value="3">Godofreda</option>
+            <option value="4">Lindesbela</option>
+            <option value="5">Brocubela</option>
+        </select>
+        <script>
+            $(document).ready(function () {
+                $('select#simpleSelectMultiplo').select2Simple();
+            });
+        </script>
+    </div>
+
+    <h3>Select Tradicional Múltiplo Com Placeholder Customizado</h3>
+    <textarea style="width: 100%; height: 170px;">
+        &lt;div class=&quot;form-group&quot;&gt;
+        &lt;select class=&quot;form-control&quot; id=&quot;simpleSelectMultiploPlaceholder&quot; multiple style=&quot;width: 300px;&quot;&gt;
+        &lt;/select&gt;
+        &lt;script&gt;
+            $(document).ready(function () {
+            $('select#simpleSelectMultiploPlaceholder').select2Simple(&quot;Meu Placeholder&quot;);
+            });
+        &lt;/script&gt;
+        &lt;/div&gt;</textarea>
+    <div class="form-group">
+        <select class="form-control" id="simpleSelectMultiploPlaceholder" multiple style="width: 300px;">
+            <option value="">Selecione um valor</option>
+            <option value="1">Joséfa</option>
+            <option value="2">Felizberta</option>
+            <option value="3">Godofreda</option>
+            <option value="4">Lindesbela</option>
+            <option value="5">Brocubela</option>
+        </select>
+        <script>
+            $(document).ready(function () {
+                $('select#simpleSelectMultiploPlaceholder').select2Simple("Meu Placeholder");
+            });
+        </script>
+    </div>
+</div>
+
+</body>
+</html>
