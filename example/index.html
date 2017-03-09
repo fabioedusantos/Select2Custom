@@ -18,7 +18,7 @@
     <blockquote>
         Consiste em uma adaptação e um conjunto de correções para a biblioteca Select2 (https://select2.github.io/).<br><br>
         Atualmente temos duas funções que basicamente funcionam utilizando jQuery:<br>
-        1. <strong>$('select#selectAjax').select2Ajax();</strong> - onde devemos informar alguns atributos data na
+        1. <strong>$('SELETOR').select2Ajax();</strong> - onde devemos informar alguns atributos data na
         &nbsp;&nbsp;declaração do objeto HTML:<br>
         &nbsp;&nbsp;&nbsp;&nbsp;<strong>data-url=""</strong> - url que será pesquisada<br>
         &nbsp;&nbsp;&nbsp;&nbsp;<strong>data-placeholder=""</strong> - texto que fica por default no input<br>
@@ -27,7 +27,7 @@
         &nbsp;&nbsp;<strong style="color: red">OBS: Utilizando o AJAX, sua url requisitada receberá uma requisição POST com
             o input de nome "pesquisa" com o texto digitado pelo usuário para que seja adaptado os resultados.</strong><br><br>
 
-        2. <strong>$('select#selectAjax').select2Ajax(placeholder, semPesquisa);</strong> - onde pode se omitir os parâmetros placeholder e pesquisa,
+        2. <strong>$('SELETOR').select2Ajax(placeholder, semPesquisa);</strong> - onde pode se omitir os parâmetros placeholder e pesquisa,
         no entanto <strong>placeholder</strong> define o texto default do campo e <strong>semPesquisa</strong> quando <strong>true</strong> desabilita
         o mecanismo de pesquisa do campo.
     </blockquote>
