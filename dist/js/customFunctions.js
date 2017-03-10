@@ -86,7 +86,9 @@ $(document).ready(function () {
         },
         select2Simple: function (placeholder, search) {
             if(placeholder == null) placeholder = "Selecione";
-            search == null ? search = 1 : search = Infinity;
+            console.log(search);
+            (search == null || search == undefined) ? search = 1 : search = Infinity;
+            console.log(search);
             for(var i = 0; i < 2; i++) {
                 $(this).each(function () {
                     var multiple = $(this).prop('multiple');
