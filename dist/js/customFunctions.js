@@ -92,6 +92,7 @@ $(document).ready(function () {
                     var multiple = $(this).prop('multiple');
                     $(this).select2Reset();
                     $(this).select2({
+                        allowClear: true,
                         placeholder: placeholder,
                         language: "pt-BR",
                         multiple: multiple,
