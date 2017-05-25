@@ -61,7 +61,7 @@ $(document).ready(function () {
                                     language: "pt-BR",
                                     allowClear: true,
                                     multiple: false,
-                                    minimumInputLength: 0,
+                                    minimumInputLength: 1,
                                     minimumResultsForSearch: 10,
                                     ajax: {
                                         url: urlPesquisa,
